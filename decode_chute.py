@@ -5,16 +5,26 @@ chuteseg = ["WWWWWWWRWWWWWWWWWWWRWWWWWRWWRWWWWWWWWRWRWWWRRRRRRRRRRRRRRRRRRRRRRRR
             "WWWRRRRRRRRRRRRRRRRRWWWWWRWRWWWWWWWWRWWWWWWWWWRWWRWWWWWWRRRWWWWWWWWRRRWWWWWRWWRR",
             "WWWWRWWWRWWWWWWWRWRRWWWWRRRWRWWWWWWWRRRWWWWRRRWRRWWWWWWWRWRWWWWWWRRRRRWWWWWRWRRR"]
 
-chutecodes = []
+# bit chunk size of the code sequence
+chunksize = 10
+
 
 # decode rings color white(0) red(1)
+chutecodes = []
+
 for seg in chuteseg:
     bin = seg.replace("W", "0")
     bin = bin.replace("R", "1")
     chutecodes.append(bin)
 
-# bit chunk size of the code sequence
-chunksize = 10
+
+# dump all 80 ring 0 rotations
+bits = list(chutecodes[0])
+for s in range(len(bits)):
+
+    # rotate ring code to start position
+    code = ''.join(bits[s:] + bits[:s])
+    print(code)
 
 # simple scan for ascii offsets
 for d in range(128):
@@ -55,6 +65,6 @@ for d in range(128):
             if letters > 3:
                 matches += 1
                 print(d, s, text, nums)
-        
+
         if matches > 0:
-          print()
+            print()
