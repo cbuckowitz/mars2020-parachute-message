@@ -1,0 +1,16 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "image": "mcr.microsoft.com/vscode/devcontainers/python:3",
+  "runArgs": ["--name", "${localWorkspaceFolderBasename}", "--rm"],
+	"extensions": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "gruntfuggly.todo-tree",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+  ],
+
+  // "postCreateCommand": "yarn install",
+ 
+}
