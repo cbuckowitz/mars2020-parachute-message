@@ -211,4 +211,4 @@ So there it is, DARE MIGHTY THINGS.
 
 Then that one in the outer ring. Being lucky again this starts at 0 and has 4 letters, thus passing the filter. Looking at N, W and the 2 groups of 3 letters, this might pass for geo coordinates if the letters are substituted for their raw source numbers. This is giving [34°11'58"N 118°10'31"W](https://www.google.com/maps/place/34%C2%B011'58.0%22N+118%C2%B010'31.0%22W). News says this is the JPL lab where major portions of work on Perseverance were done.
 
-Well, looking at the sketch, It looks like simple barcode. Why couldn't silly me first thing simply read this, when I saw the parachute in the footage ;)
+Well, looking at the sketch, It looks like simple barcode. Why couldn't silly me read this in the first place, when I saw the parachute in the footage ;)
