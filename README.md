@@ -1,6 +1,6 @@
 # NASA Mars 2020 Perseverance Rover Parachute Riddle
 
-[NASA's Mars 2020 Perseverance rover](https://mars.nasa.gov/mars2020/) used a parachute during landing on mars. That parachute featured an intricate design, which I did not pay any attention to, when I first watched the [video of the descent and touchdown](https://www.youtube.com/watch?v=4czjS9h4Fpg). Some time later, during some press conference, NASA gave a hint, there would be a secret message on the parachute. Picked this up in some news article about the parachute code and how it was solved within hours. So that did pick my interest and looking at the [NASA coverage](https://mars.nasa.gov/news/8870/nasas-mars-perseverance-rover-provides-front-row-seat-to-landing-first-audio-recording-of-red-planet/), armed with the spoilers from the news, I started my attempt at decoding that unresistable secret.
+[NASA's Mars 2020 Perseverance rover](https://mars.nasa.gov/mars2020/) used a parachute during landing on mars. That parachute featured an intricate design, which I did not pay any attention to, when I first watched the [video of the descent and touchdown](https://www.youtube.com/watch?v=4czjS9h4Fpg). Some time later, during some press conference, NASA gave a hint, there would be a hidden message on the parachute. Picked this up in some news article about the parachute code and how it was solved within hours. So that did pick my interest and looking at the [NASA coverage](https://mars.nasa.gov/news/8870/nasas-mars-perseverance-rover-provides-front-row-seat-to-landing-first-audio-recording-of-red-planet/), armed with the spoilers from the news, I started my attempt at decoding that unresistable riddle.
 
 ## What does the parachute look like anyway
 
@@ -44,7 +44,7 @@ ring 2 0001111111111111111100000101000000001000000000100100000011100000000111000
 outer  00001000100000001011000011101000000011100001110110000000101000000111110000010111
 ```
 
-## Binary code rotation
+## Bit rotation
 Looks like binary, nice. Looks regular as well and 80 makes for nice 8-bit or 10-bit chunks. The start is random, meaning the chute is spinning and who knows where the top is. So that might need some bit rotation. Python to the rescue, i wrote some [lines of decode](decode_chute.py) and got some [output](output.txt).
 
 ```
@@ -191,11 +191,11 @@ Nevertheless in the decode I ran it for each of the 80 possible start position a
 
 This is the printout in blocks for each ring code. First is the ascii offset 64, then the shift, the text(with offset) and the raw numbers (without offset)
 
-## The Secret Message
+## The Hidden Message
 
 Lucky me, there is the first word at shift 0. Second word on shift 40 and third at 20. Chunksize 10 following, the words continue in the next ring where the former left.
 
-![secret message](SecretMessage.png)
+![hidden message](HiddenMessage.png)
 
 ```
 64 0 DARE¿ппп [4, 1, 18, 5, 127, 1023, 1023, 1023]
@@ -207,8 +207,8 @@ Lucky me, there is the first word at shift 0. Second word on shift 40 and third 
 64 0 bKzN¶J_W [34, 11, 58, 14, 118, 10, 31, 23]
 ```
 
-So there it is, the maybe not so secret DARE MIGHTY THINGS.
+So there it is, DARE MIGHTY THINGS.
 
-What ist the last one in the outer ring. Being lucky again this starts at 0 and has 4 letters, thus passing the filter. Looking at N, W and the 2 groups of 3 letters, this might pass for geo coordinates if the letters are substituted for their raw source numbers. This is giving [34°11'58"N 118°10'31"W](https://www.google.com/maps/place/34%C2%B011'58.0%22N+118%C2%B010'31.0%22W). News says this is the JPL lab where major portions of work on Perseverance were done.
+Then that one in the outer ring. Being lucky again this starts at 0 and has 4 letters, thus passing the filter. Looking at N, W and the 2 groups of 3 letters, this might pass for geo coordinates if the letters are substituted for their raw source numbers. This is giving [34°11'58"N 118°10'31"W](https://www.google.com/maps/place/34%C2%B011'58.0%22N+118%C2%B010'31.0%22W). News says this is the JPL lab where major portions of work on Perseverance were done.
 
-Well, sketching it up It looks simple barcode. why couldn't silly me read this right away, when I first saw this in the footage ;)
+Well, looking at the sketch, It looks like simple barcode. Why couldn't silly me first thing simply read this, when I saw the parachute in the footage ;)
